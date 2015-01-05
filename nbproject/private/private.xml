@@ -3,17 +3,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/reports/com/openbravo/reports/categorysales.bs</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/newtext.txt</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/config/JFrmConfig.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/sales/JPanelButtons.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/sales/JPanelTicketSales.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/panels/PaymentsModel.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/config/JPanelConfigGeneral.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/README_First.txt</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/panels/JPanelPayments.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/forms/JRootApp.java</file>
-            <file>file:/Users/kh/NetBeansProjects/uniCenta_oPos_3.70/src-pos/com/openbravo/pos/panels/PaymentsEditor.java</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/forms/JRootApp.java</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/templates/Menu.Root.txt</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/templates/Role.Administrator.xml</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/forms/DataLogicSystem.java</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/locales/pos_messages.properties</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/reports/com/openbravo/reports/flaggedtransactions.bs</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/reports/com/openbravo/reports/flaggedtransactions.jrxml</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/reports/com/openbravo/reports/extendedcashregisterlog.bs</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/templates/Role.Manager.xml</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/sales/JPanelButtons.java</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/reports/com/openbravo/reports/flaggedtransactions.properties</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/forms/AppUser.java</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/forms/JPrincipalApp.java</file>
+            <file>file:/Users/elaine/NetBeansProjects/Shield/src-pos/com/openbravo/pos/scripts/MySQL-upgrade-3.02.sql</file>
         </group>
     </open-files>
 </project-private>

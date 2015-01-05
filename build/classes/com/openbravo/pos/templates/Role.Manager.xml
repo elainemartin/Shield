@@ -119,6 +119,7 @@
             <class name="/com/openbravo/reports/closedproducts_1.bs"/>
             <class name="/com/openbravo/reports/extendedcashregisterlog.bs"/>
             <class name="/com/openbravo/reports/extproducts.bs"/>
+            <class name="/com/openbravo/reports/flaggedtransactions.bs"/>
             <class name="/com/openbravo/reports/paymentreport.bs"/>
             <class name="/com/openbravo/reports/piesalescat.bs"/>
             <class name="/com/openbravo/reports/productsales.bs"/>
