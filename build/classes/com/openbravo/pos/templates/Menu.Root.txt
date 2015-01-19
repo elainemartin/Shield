@@ -89,7 +89,10 @@ group = menu.addGroup("Menu.Backoffice");
         submenu.addPanel("/com/openbravo/images/reports.png", "Menu.SaleTaxes", "/com/openbravo/reports/saletaxes.bs");
         submenu.addPanel("/com/openbravo/images/reports.png", "Menu.TaxCatSales", "/com/openbravo/reports/taxcatsales.bs");
         submenu.addPanel("/com/openbravo/images/reports.png", "Menu.ReportTaxes", "/com/openbravo/reports/taxes.bs");
+<<<<<<< HEAD
         submenu.addPanel("/com/openbravo/images/reports.png", "Menu.FlaggedTransactionsLog", "/com/openbravo/reports/flaggedtransactions.bs");
+=======
+>>>>>>> origin/master
     submenu.addTitle("Menu.SalesManagement.Charts");
         submenu.addPanel("/com/openbravo/images/chart.png", "Menu.ProductSales", "/com/openbravo/reports/productsales.bs");
 // Not Derby        submenu.addPanel("/com/openbravo/images/chart.png", "Menu.ProductCategorySalesPieChart", "/com/openbravo/reports/piesalescat.bs");
