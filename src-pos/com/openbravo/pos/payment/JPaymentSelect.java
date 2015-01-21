@@ -860,7 +860,12 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
 
     private void m_jButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jButtonOKActionPerformed
         if (m_dTotal>1000){
-            JOptionPane.showMessageDialog(null,"This transaction has been denied, please contact Shield Compliance for further information.", "TRANSACTION DENIED", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"This transaction exceeds this customers limit at this time and has been denied. \nPlease contact Shield Compliance for further information.", "TRANSACTION DENIED", JOptionPane.INFORMATION_MESSAGE);
+        }
+        else if (customerext.getLastname().equals("Sherman")){
+            if (m_dTotal>30){
+                JOptionPane.showMessageDialog(null,"Out of state customers may only purchase 1/4 ounce of product and this transaction has been denied.\nPlease contact Shield Compliance for further information.", "TRANSACTION DENIED", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
         else {
         PaymentInfo returnPayment = ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).executePayment();
