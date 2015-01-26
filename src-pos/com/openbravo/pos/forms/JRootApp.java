@@ -168,8 +168,8 @@ public class JRootApp extends JPanel implements AppView {
 //                        , JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION) {  
 //
 //                    try {
-//                        //BatchSentence bsentence = new BatchSentenceResource(session, "/com/openbravo/pos/scripts/resources-and-permissions.sql");
-//                        BatchSentence bsentence = new BatchSentenceResource(session, "/com/openbravo/pos/scripts/flags.sql");
+//                        BatchSentence bsentence = new BatchSentenceResource(session, "/com/openbravo/pos/scripts/resources-and-permissions.sql");
+//                        //BatchSentence bsentence = new BatchSentenceResource(session, "/com/openbravo/pos/scripts/flags.sql");
 //
 //                        java.util.List l = bsentence.list();
 //                        if (l.size() > 0) {
@@ -185,7 +185,7 @@ public class JRootApp extends JPanel implements AppView {
 //                    session.close();
 //                    return false;
 //                }
-        
+//        
 //        if (!AppLocal.APP_VERSION.equals(sDBVersion)) {
 //            
 //            // Create or upgrade database
