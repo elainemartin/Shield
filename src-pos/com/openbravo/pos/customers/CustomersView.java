@@ -891,28 +891,28 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, "9"},
-                {null, null, null, null, null, "17"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, "9", null, null},
+                {null, null, null, null, null, "17", null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "TicketID", "Date", "Product", "Quantity", "Total", "Tax Total"
+                "TicketID", "Date", "Product", "Quantity", "Total", "Tax Total", "Flag", "Flag Description"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jTable1.setOpaque(false);
         jTable1.setRowHeight(20);
         jTable1.setShowHorizontalLines(false);
@@ -924,6 +924,10 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             jTable1.getColumnModel().getColumn(3).setHeaderValue("Quantity");
             jTable1.getColumnModel().getColumn(4).setHeaderValue("Total");
             jTable1.getColumnModel().getColumn(5).setHeaderValue("Tax Total");
+            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            // jTable1.getColumnModel().getColumn(7).setMaxWidth(200);
         }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
