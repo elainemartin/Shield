@@ -868,7 +868,6 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
                     JOptionPane.showMessageDialog(null,"Out-of-state customers may only purchase 1/4 ounce of product.\nPlease contact Shield Compliance for further information.", "TRANSACTION DENIED", JOptionPane.INFORMATION_MESSAGE);
                     }
                 else {
-                    System.out.println("I entered the else.");
                     PaymentInfo returnPayment = ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).executePayment();
                     if (returnPayment != null) {
                         m_aPaymentInfo.add(returnPayment);
@@ -878,7 +877,6 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
                 }
             }
             catch (NullPointerException name) {
-                System.out.println("I entered the else.");
                 PaymentInfo returnPayment = ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).executePayment();
                 if (returnPayment != null) {
                     m_aPaymentInfo.add(returnPayment);
