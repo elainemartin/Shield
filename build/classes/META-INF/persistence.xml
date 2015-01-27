@@ -14,7 +14,7 @@
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>com.openbravo.pos.customers.Taxlines</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://shieldtest2.cihvsmdnkuq0.us-west-2.rds.amazonaws.com:3306/test2"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://resettest2.cihvsmdnkuq0.us-west-2.rds.amazonaws.com:3306/test2"/>
       <property name="javax.persistence.jdbc.user" value="khundman"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="password"/>

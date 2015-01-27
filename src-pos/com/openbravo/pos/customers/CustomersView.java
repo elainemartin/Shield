@@ -471,7 +471,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
     class TransactionTableModel extends AbstractTableModel {
 
         List<CustomerTransaction> transactionList;
-        String[] columnNames = {"TicketID", "Date", "Product", "Quantity", "Total", "Tax Total"};
+        String[] columnNames = {"TicketID", "Date", "Product", "Quantity", "Total", "Tax Total", "Flag", "Flag Description"};
 
         public TransactionTableModel(List<CustomerTransaction> list) {
             transactionList = list;
@@ -479,7 +479,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
 
         @Override
         public int getColumnCount() {
-            return 6;
+            return 8;
         }
 
         @Override
@@ -491,6 +491,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         @Override
         public Object getValueAt(int row, int column) {
             CustomerTransaction customerTransaction = transactionList.get(row);
+            DecimalFormat df = new DecimalFormat("#.00");    
             switch (column) {
 
                 case 0:
@@ -505,10 +506,17 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
                 case 3:
                     return customerTransaction.getUnit();
                 case 4:
-                    Double amount = customerTransaction.getTotal();
-                    DecimalFormat df = new DecimalFormat("#.##");                    
+                    Double amount = customerTransaction.getTotal();                
                     String formattedAmount = df.format(amount);
                     return formattedAmount;
+                case 5:
+                    Double tax = customerTransaction.getTaxTotal();
+                    String formattedTax = df.format(tax);
+                    return formattedTax;
+                case 6:
+                    return customerTransaction.getFlag();
+                case 7:
+                    return customerTransaction.getFlagDesc();
                 default:
                     return "";
             }
@@ -683,6 +691,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             }
         });
 
+        jTabbedPane1.setAutoscrolls(true);
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTabbedPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -844,7 +853,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(292, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -882,28 +891,28 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, "9"},
-                {null, null, null, null, null, "17"},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, "9", null, null},
+                {null, null, null, null, null, "17", null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "TicketID", "Date", "Product", "Quantity", "Total", "Tax Total"
+                "TicketID", "Date", "Product", "Quantity", "Total", "Tax Total", "Flag", "Flag Description"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Double.class
+                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
         jTable1.setOpaque(false);
         jTable1.setRowHeight(20);
         jTable1.setShowHorizontalLines(false);
@@ -915,6 +924,10 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             jTable1.getColumnModel().getColumn(3).setHeaderValue("Quantity");
             jTable1.getColumnModel().getColumn(4).setHeaderValue("Total");
             jTable1.getColumnModel().getColumn(5).setHeaderValue("Tax Total");
+            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
+            jTable1.getColumnModel().getColumn(6).setPreferredWidth(100);
+            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
+            // jTable1.getColumnModel().getColumn(7).setMaxWidth(200);
         }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -923,7 +936,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -946,7 +959,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(m_jImage, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(143, Short.MAX_VALUE))
+                .addContainerGap(327, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -978,7 +991,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -997,7 +1010,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)

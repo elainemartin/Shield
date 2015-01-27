@@ -45,6 +45,8 @@ public class CustomerTransaction {
     Date transactionDate;
     String customerName;
     Double taxTotal; //added by KH
+    String flag; //added by EM
+    String flagDesc; //added by EM
 
     /**
      * Main method to return all customer's transactions 
@@ -62,8 +64,10 @@ public class CustomerTransaction {
      * @param transactionDate
      * @param name
      * @param taxTotal
+     * @param flag
+     * @param flagDesc
      */
-    public CustomerTransaction(String ticketId, String productName, String unit, Double amount, Double total, Date transactionDate, String name, Double taxTotal) {
+    public CustomerTransaction(String ticketId, String productName, String unit, Double amount, Double total, Date transactionDate, String name, Double taxTotal, String flag, String flagDesc) {
         this.ticketId = ticketId;
         this.productName = productName;
         this.unit = unit;
@@ -72,6 +76,8 @@ public class CustomerTransaction {
         this.transactionDate = transactionDate;
         this.customerName = name;
         this.taxTotal = taxTotal;
+        this.flag = flag;
+        this.flagDesc = flagDesc;
     }
 
     /**
@@ -202,6 +208,30 @@ public class CustomerTransaction {
 
     /**
      *
+     * @return flag
+     */
+    public String getFlag() {
+        return flag;
+    }
+
+    // /**
+    //  *
+    //  * @param flag
+    //  */
+    // public void setFlag(String flag) {
+    //     this.flag = flag;
+    // }
+
+    /**
+     *
+     * @return flag description
+     */
+    public String getFlagDesc() {
+        return flagDesc;
+    }
+
+    /**
+     *
      * @return ticketlines for this customer
      */
     public static SerializerRead getSerializerRead() {
@@ -218,6 +248,8 @@ public class CustomerTransaction {
                 String dateValue = dr.getString(6);
                 String customerName = dr.getString(7);
                 Double taxTotal = dr.getDouble(5)*.09;
+                String flag = dr.getString(8);
+                String flagDesc = dr.getString(9);
 
                 SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                 Date date = null;
@@ -226,7 +258,7 @@ public class CustomerTransaction {
                 } catch (ParseException ex) {
                     Logger.getLogger(DataLogicSales.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                return new CustomerTransaction(ticketId, productName, unit, amount, total, date, customerName, taxTotal);
+                return new CustomerTransaction(ticketId, productName, unit, amount, total, date, customerName, taxTotal, flag, flagDesc);
             }
         };
     }
