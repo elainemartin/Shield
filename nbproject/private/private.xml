@@ -14,6 +14,7 @@
             <file>file:/Users/kh/NetBeansProjects/Shield-master/locales/pos_messages.properties</file>
             <file>file:/Users/kh/NetBeansProjects/Shield-master/src-pos/com/openbravo/pos/util/PropertyUtils.java</file>
             <file>file:/Users/kh/NetBeansProjects/Shield-master/src-pos/com/openbravo/pos/forms/AppConfig.java</file>
+            <file>file:/Users/kh/NetBeansProjects/Shield-master/nbproject/build-impl.xml</file>
             <file>file:/Users/kh/NetBeansProjects/Shield-master/src-pos/com/openbravo/pos/payment/JPaymentSelect.java</file>
             <file>file:/Users/kh/NetBeansProjects/Shield-master/src-pos/com/openbravo/pos/customers/CustomerInfoExt.java</file>
         </group>
