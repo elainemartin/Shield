@@ -24,6 +24,7 @@ import com.openbravo.pos.forms.AppLocal;
 import com.openbravo.pos.forms.AppView;
 import java.awt.BorderLayout;
 import java.awt.Component;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -91,6 +92,7 @@ public class JPaymentMagcard extends javax.swing.JPanel implements JPaymentInter
 
         m_paymentgateway.execute(payinfo);
         if (payinfo.isPaymentOK()) {
+            JOptionPane.showMessageDialog(null,"Card was processed successfully.","Payment Confirmed",JOptionPane.INFORMATION_MESSAGE);
             return payinfo;
         } else {
             jlblMessage.setText(payinfo.getMessage());

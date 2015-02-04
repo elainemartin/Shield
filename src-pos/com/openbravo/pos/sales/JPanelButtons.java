@@ -297,6 +297,7 @@ public class JPanelButtons extends javax.swing.JPanel {
         String dob1 = "Date of birth".toLowerCase();
         String dob2 = "DOB".toLowerCase();
         String dob3 = "Birthday".toLowerCase();
+        String dob4 = "DBB".toLowerCase();
         int DOBindex = 0;
         String dob = "";
         boolean ageFound = false;
@@ -315,25 +316,32 @@ public class JPanelButtons extends javax.swing.JPanel {
             DOBindex = age.indexOf(dob3);
             //System.out.print("Found Birthday");
         }
+        if (age.contains(dob4)){
+            ageFound = true;
+            DOBindex = age.indexOf(dob4);
+            //System.out.print("Found Birthday");
+        }
         //System.out.print(DOBindex);
         if (ageFound == true){
             String cut = age.substring(DOBindex);
-            Pattern pattern = Pattern.compile("(\\d)+([/\\\\]|-)(\\d)+([/\\\\]|-)(\\d\\d)+", Pattern.CASE_INSENSITIVE);
+            Pattern pattern = Pattern.compile("(\\d)+([/\\\\]|-)*(\\d)+([/\\\\]|-)*(\\d\\d)+", Pattern.CASE_INSENSITIVE);
             Matcher matcher = pattern.matcher(cut);
             int i = 0;
             while(i < 1 && matcher.find()){
                 dob = matcher.group(0).toString();
+                System.out.println(dob.toString());
                 i++;
             }
         }
         //JOptionPane.showMessageDialog(null,"DOB: " + dob,"AGE VERIFICATION",JOptionPane.INFORMATION_MESSAGE);
         Date dobfinal = null;
-        String[] formatStrings = {"M/y", "M/d/y", "M-d-y"};  
+        String[] formatStrings = {"M/y", "M/d/y", "M-d-y", "yyyyMMdd"};  
         for (String formatString : formatStrings)
         {
             try
             {
                 dobfinal = new SimpleDateFormat(formatString).parse(dob);
+                System.out.println(dobfinal.toString());
             }
             catch (ParseException e) {}
         }
