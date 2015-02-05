@@ -859,31 +859,13 @@ public abstract class JPaymentSelect extends javax.swing.JDialog
     }//GEN-LAST:event_m_jTabPaymentStateChanged
 
     private void m_jButtonOKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jButtonOKActionPerformed
-        String lastname = "";
-        if (m_dTotal>1000){
-            JOptionPane.showMessageDialog(null,"This transaction exceeds this customers limit and has been denied. \nPlease contact Shield Compliance for further information.", "TRANSACTION DENIED", JOptionPane.INFORMATION_MESSAGE);
-        }
-        else try {if (customerext.getLastname().equals("Sherman")){
-                if (m_dTotal>30){
-                    JOptionPane.showMessageDialog(null,"Out-of-state customers may only purchase 1/4 ounce of product.\nPlease contact Shield Compliance for further information.", "TRANSACTION DENIED", JOptionPane.INFORMATION_MESSAGE);
-                    }
-                else {
-                    PaymentInfo returnPayment = ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).executePayment();
-                    if (returnPayment != null) {
-                        m_aPaymentInfo.add(returnPayment);
-                        accepted = true;
-                        dispose();}                    
-                    }
-                }
-            }
-            catch (NullPointerException name) {
-                PaymentInfo returnPayment = ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).executePayment();
-                if (returnPayment != null) {
-                    m_aPaymentInfo.add(returnPayment);
-                    accepted = true;
-                    dispose();}
-                }    
-        
+  
+        PaymentInfo returnPayment = ((JPaymentInterface) m_jTabPayment.getSelectedComponent()).executePayment();
+        if (returnPayment != null) {
+            m_aPaymentInfo.add(returnPayment);
+            accepted = true;
+            dispose();
+        }       
     }//GEN-LAST:event_m_jButtonOKActionPerformed
 
     private void m_jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_m_jButtonCancelActionPerformed

@@ -78,7 +78,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jSearchkey.getDocument().addDocumentListener(dirty);
         m_jName.getDocument().addDocumentListener(dirty);
         m_jCategory.addActionListener(dirty);
-        //m_jNotes.getDocument().addDocumentListener(dirty);
+        m_jNotes.getDocument().addDocumentListener(dirty);
         txtMaxdebt.getDocument().addDocumentListener(dirty);
         m_jVisible.addActionListener(dirty);
         
@@ -139,7 +139,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jSearchkey.setText(null);
         m_jName.setText(null);
         m_CategoryModel.setSelectedKey(null);
-        //m_jNotes.setText(null);
+        m_jNotes.setText(null);
 
         txtMaxdebt.setText(null);
         txtCurdebt.setText(null);
@@ -167,7 +167,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jSearchkey.setEnabled(false);
         m_jName.setEnabled(false);
         m_jCategory.setEnabled(false);
-        //m_jNotes.setEnabled(false);
+        m_jNotes.setEnabled(false);
         txtMaxdebt.setEnabled(false);
         txtCurdebt.setEnabled(false);
         txtCurdate.setEnabled(false);
@@ -206,7 +206,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jSearchkey.setText(null);
         m_jName.setText(null);
         m_CategoryModel.setSelectedKey(null);
-        //m_jNotes.setText(null);
+        m_jNotes.setText(null);
         txtMaxdebt.setText(null);
         txtCurdebt.setText(null);
         txtCurdate.setText(null);        
@@ -233,7 +233,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jSearchkey.setEnabled(true);
         m_jName.setEnabled(true);
         m_jCategory.setEnabled(true);
-        //m_jNotes.setEnabled(true);
+        m_jNotes.setEnabled(true);
         txtMaxdebt.setEnabled(true);
         txtCurdebt.setEnabled(true);
         txtCurdate.setEnabled(true);
@@ -274,7 +274,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jTaxID.setText((String) customer[1]);
         m_jSearchkey.setText((String) customer[2]);
         m_jName.setText((String) customer[3]);
-        //m_jNotes.setText((String) customer[4]);
+        m_jNotes.setText((String) customer[4]);
         m_jVisible.setSelected(((Boolean) customer[5]));
         jcard.setText((String) customer[6]);
         txtMaxdebt.setText(Formats.CURRENCY.formatValue(customer[7]));
@@ -302,7 +302,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jTaxID.setEnabled(false);
         m_jSearchkey.setEnabled(false);
         m_jName.setEnabled(false);
-        //m_jNotes.setEnabled(false);
+        m_jNotes.setEnabled(false);
         txtMaxdebt.setEnabled(false);
         txtCurdebt.setEnabled(false);
         txtCurdate.setEnabled(false);
@@ -347,7 +347,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jTaxID.setText((String) customer[1]);
         m_jSearchkey.setText((String) customer[2]);
         m_jName.setText((String) customer[3]);
-        //m_jNotes.setText((String) customer[4]);
+        m_jNotes.setText((String) customer[4]);
         m_jVisible.setSelected(((Boolean) customer[5]));
         jcard.setText((String) customer[6]);
         txtMaxdebt.setText(Formats.CURRENCY.formatValue(customer[7]));
@@ -376,7 +376,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         m_jTaxID.setEnabled(true);
         m_jSearchkey.setEnabled(true);
         m_jName.setEnabled(true);
-        //m_jNotes.setEnabled(true);
+        m_jNotes.setEnabled(true);
         txtMaxdebt.setEnabled(true);
         txtCurdebt.setEnabled(true);
         txtCurdate.setEnabled(true);
@@ -421,7 +421,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         customer[1] = m_jTaxID.getText();
         customer[2] = m_jSearchkey.getText();
         customer[3] = m_jName.getText();
-        //customer[4] = m_jNotes.getText();
+        customer[4] = m_jNotes.getText();
         customer[5] = m_jVisible.isSelected();
         customer[6] = Formats.STRING.parseValue(jcard.getText()); // Format to manage NULL values
         customer[7] = Formats.CURRENCY.parseValue(txtMaxdebt.getText(), 0.0);
@@ -471,7 +471,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
     class TransactionTableModel extends AbstractTableModel {
 
         List<CustomerTransaction> transactionList;
-        String[] columnNames = {"TicketID", "Date", "Product", "Quantity", "Total", "Tax Total", "Flag", "Flag Description"};
+        String[] columnNames = {"TicketID", "Date", "Product", "Quantity", "Total"};
 
         public TransactionTableModel(List<CustomerTransaction> list) {
             transactionList = list;
@@ -479,7 +479,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
 
         @Override
         public int getColumnCount() {
-            return 8;
+            return 5;
         }
 
         @Override
@@ -491,7 +491,6 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         @Override
         public Object getValueAt(int row, int column) {
             CustomerTransaction customerTransaction = transactionList.get(row);
-            DecimalFormat df = new DecimalFormat("#.00");    
             switch (column) {
 
                 case 0:
@@ -506,17 +505,10 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
                 case 3:
                     return customerTransaction.getUnit();
                 case 4:
-                    Double amount = customerTransaction.getTotal();                
+                    Double amount = customerTransaction.getTotal();
+                    DecimalFormat df = new DecimalFormat("#.##");                    
                     String formattedAmount = df.format(amount);
                     return formattedAmount;
-                case 5:
-                    Double tax = customerTransaction.getTaxTotal();
-                    String formattedTax = df.format(tax);
-                    return formattedTax;
-                case 6:
-                    return customerTransaction.getFlag();
-                case 7:
-                    return customerTransaction.getFlagDesc();
                 default:
                     return "";
             }
@@ -588,8 +580,8 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         jPanel5 = new javax.swing.JPanel();
         m_jImage = new com.openbravo.data.gui.JImageEditor();
         jPanel3 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        m_jNotes = new javax.swing.JTextArea();
 
         jLabel7.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jLabel7.setText(AppLocal.getIntString("label.taxid")); // NOI18N
@@ -691,7 +683,6 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             }
         });
 
-        jTabbedPane1.setAutoscrolls(true);
         jTabbedPane1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTabbedPane1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
@@ -853,7 +844,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtPostal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(292, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -891,44 +882,24 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         jTable1.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, "9", null, null},
-                {null, null, null, null, null, "17", null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "TicketID", "Date", "Product", "Quantity", "Total", "Tax Total", "Flag", "Flag Description"
+                "TicketID", "Date", "Product", "Quantity", "Total"
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        ));
+        jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jTable1.setOpaque(false);
         jTable1.setRowHeight(20);
         jTable1.setShowHorizontalLines(false);
         jScrollPane2.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setHeaderValue("TicketID");
-            jTable1.getColumnModel().getColumn(1).setHeaderValue("Date");
-            jTable1.getColumnModel().getColumn(2).setHeaderValue("Product");
-            jTable1.getColumnModel().getColumn(3).setHeaderValue("Quantity");
-            jTable1.getColumnModel().getColumn(4).setHeaderValue("Total");
-            jTable1.getColumnModel().getColumn(5).setHeaderValue("Tax Total");
-            jTable1.getColumnModel().getColumn(6).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(6).setPreferredWidth(100);
-            jTable1.getColumnModel().getColumn(6).setMaxWidth(100);
-            // jTable1.getColumnModel().getColumn(7).setMaxWidth(200);
-        }
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -936,7 +907,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 515, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -959,7 +930,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(142, 142, 142)
                 .addComponent(m_jImage, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(327, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -971,34 +942,24 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
 
         jTabbedPane1.addTab(bundle.getString("label.photo"), jPanel5); // NOI18N
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {"DUI", "Felony", "9/19/2008", "CO"},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Offense", "Offense Type", "Arrest Date", "State"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable2);
+        m_jNotes.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        jScrollPane1.setViewportView(m_jNotes);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(234, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 226, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab(AppLocal.getIntString("label.notes"), jPanel3); // NOI18N
@@ -1010,7 +971,7 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 740, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -1112,6 +1073,10 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void txtFaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFaxActionPerformed
+
+    }//GEN-LAST:event_txtFaxActionPerformed
+
     private void txtCurdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCurdateActionPerformed
 
     }//GEN-LAST:event_txtCurdateActionPerformed
@@ -1119,10 +1084,6 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
     private void jTabbedPane1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1PropertyChange
         // TODO add your handling code here:
     }//GEN-LAST:event_jTabbedPane1PropertyChange
-
-    private void txtFaxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFaxActionPerformed
-
-    }//GEN-LAST:event_txtFaxActionPerformed
     
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1154,15 +1115,15 @@ public final class CustomersView extends javax.swing.JPanel implements EditorRec
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jcard;
     private javax.swing.JComboBox m_jCategory;
     private com.openbravo.data.gui.JImageEditor m_jImage;
     private javax.swing.JTextField m_jName;
+    private javax.swing.JTextArea m_jNotes;
     private javax.swing.JTextField m_jSearchkey;
     private javax.swing.JTextField m_jTaxID;
     private javax.swing.JCheckBox m_jVisible;
