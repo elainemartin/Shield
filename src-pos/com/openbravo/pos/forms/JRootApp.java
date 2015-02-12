@@ -873,7 +873,7 @@ jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/openbravo
         m_jPanelTitle.add(m_jLblTitle, java.awt.BorderLayout.CENTER);
 
         poweredby.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        poweredby.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/openbravo/images/poweredby_uni.png"))); // NOI18N
+        poweredby.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/openbravo/images/shieldBanner.png"))); // NOI18N
         poweredby.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 5, 0, 5));
         poweredby.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         poweredby.setMaximumSize(new java.awt.Dimension(180, 34));
